@@ -4,7 +4,7 @@
  * @file Drush commands for MeeGo sync migration.
  */
 
-define('MEEGO_AUTH_URL', 'http://auth.meego.local/'); // Include ending slash.
+define('MEEGO_AUTH_URL', 'https://auth.meego.com/'); // Include ending slash.
 
 /**
  * Implementation of hook_drush_command().
@@ -120,7 +120,7 @@ function drush_meego_sync_users_mmu_sync() {
   if ($msg === FALSE || substr($msg, 0, 1) !== '#') {
     drush_die(dt('Invalid file or cannot be read.'));
   }
-  if (!preg_match("/'(uid)','(name)','(mail)','(status)','(profile_firstname)','(profile_lastname)','(muid)'.*/", substr($msg, 1), $matches) && count($matches) != 7) {
+  if (!preg_match("/'(uid)','(name)','(mail)','(status)','(profile_firstname)','(profile_lastname)','(muid)'.*/", substr($msg, 1), $matches) && count($matches) != 8) {
     drush_die(dt('File does not contain auth.MeeGo UIDs, rerun auth.MeeGo migration.'));
   }
 
